@@ -1,15 +1,16 @@
 const tableData = data
-const tbody = d3.select('tbody')
-const dateSelect = d3.select("#dateselector")
-const datesArray = tableData.map(e => e.datetime)
-const citySelect = d3.select("#cityselector")
-const citiesArray = tableData.map(e => e.city)
+const filters = {}
+const dateSelect = d3.select("#datetime")
+const citySelect = d3.select("#city")
+
+
 
 function buildTable(data) {
-    tbody.html('')  // Clear existing data
+    const tbody = d3.select('tbody')
+    tbody.html('')
 
     data.forEach(row => {
-        const currentRow = tbody.append('tr')  // append row
+        const currentRow = tbody.append('tr') 
         Object.values(row).forEach(value => {
             const cell = currentRow.append('td')
             cell.text(value)
@@ -18,7 +19,7 @@ function buildTable(data) {
 }
 
 function getOptions(key, select) {
-    let arrayValues = key.filter(function(value, index, self){
+    let arrayValues = tableData.map(e => e[key]).filter(function(value, index, self){
         return index == self.indexOf(value)
     })
     arrayValues.forEach(sv => {
@@ -27,21 +28,33 @@ function getOptions(key, select) {
     })
 }
 
-const handleClick = () => {
-    d3.event.preventDefault()
+function updateFilters() {
+    
+    const changedElement = d3.select(this).select("select");
+    const elementValue = changedElement.property("value");
+    const filterId = changedElement.attr("id");
 
-    // const date = d3.select('#datetime').property('value')
-    const date = dateSelect.property("value")
-    let filteredData = tableData;
+    elementValue ? filters[filterId] = elementValue : delete filters[filterId]
+    filterTable()
+}
 
-    if (date)
-        filteredData = filteredData.filter(row => row.datetime === date)
+function filterTable() {
+    console.log("entered filter table function")
+    console.log(filters)
+    let filteredData = tableData
+
+    Object.entries(filters).forEach(([key, value]) => {
+        console.log(key)
+        console.log(value)
+        filteredData = filteredData.filter(row => row[key] === value)
+        
+    })
+
     buildTable(filteredData)
 }
 
-d3.selectAll('#filter-btn').on('click', handleClick)
-dateSelect.on("change", handleClick)
-// buildTable(tableData)
-buildTable(tableData)
-getOptions(datesArray,dateSelect)
-getOptions(citiesArray,citySelect)
+
+d3.selectAll('.filter').on('change', updateFilters)
+getOptions("datetime",dateSelect)
+getOptions("city",citySelect)
+//buildTable()
