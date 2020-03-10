@@ -57,4 +57,4 @@ function filterTable() {
 d3.selectAll('.filter').on('change', updateFilters)
 getOptions("datetime",dateSelect)
 getOptions("city",citySelect)
-//buildTable()
+buildTable(tableData)
