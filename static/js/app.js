@@ -8,6 +8,7 @@ const shapeSelect = d3.select("#shape")
 
 
 
+
 function buildTable(data) {
     const tbody = d3.select("tbody")
     tbody.html("")
@@ -25,9 +26,12 @@ function getOptions(key, select) {
     let arrayValues = tableData.map(e => e[key]).filter(function(value, index, self){
         return index == self.indexOf(value)
     })
+    if (key != "datetime"){
+        arrayValues.sort()
+    }
     arrayValues.forEach(sv => {
         const selectOption = select.append("option")
-        selectOption.text(sv)
+        selectOption.text(sv.toUpperCase())
     })
 }
 
@@ -55,6 +59,7 @@ function resetFilters() {
     Object.entries(filters).forEach(([key, value]) => {
         delete filters[key]
     filterTable()
+    d3.selectAll("select").property("value","")
     })
 }
 

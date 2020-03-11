@@ -67,10 +67,10 @@ body {
 
 select {
   display: block;
-  width: 100%;
+  width: 110%;
   padding: 8px;
-  color: #8e979f;
-  outline: none;
+  color: #000000;
+  
 }
 
 #table-area th {
@@ -98,16 +98,21 @@ select {
   padding: 20px;
   margin: 0;
   background: black;
-  background-image: url("../images/nasa.jpg");
+  background-image: url("../images/space.jpg");
   background-attachment: fixed;
   background-position: bottom center;
   background-size: cover;
+  
 }
 
 .hero h1 {
   margin-top: 200px;
   font-size: 0.1rem;
   animation: title 1.2s forwards linear;
+  transition: ease-out;
+  
+  
+  
 }
 
 .hero p {
@@ -115,6 +120,7 @@ select {
   opacity: 0;
   animation: subtitle 1.2s forwards linear;
   animation-delay: 1.2s;
+  transition: ease-out;
 }
 
 /* input placeholder color changes */
