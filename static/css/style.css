@@ -29,7 +29,7 @@ body {
 }
 
 /* The code styles the text at the bottom of the footer */
-.footer > .bottom {
+.footer>.bottom {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -70,7 +70,7 @@ select {
   width: 110%;
   padding: 8px;
   color: #000000;
-  
+
 }
 
 #table-area th {
@@ -102,7 +102,7 @@ select {
   background-attachment: fixed;
   background-position: bottom center;
   background-size: cover;
-  
+
 }
 
 .hero h1 {
@@ -110,9 +110,9 @@ select {
   font-size: 0.1rem;
   animation: title 1.2s forwards linear;
   transition: ease-out;
-  
-  
-  
+
+
+
 }
 
 .hero p {
@@ -147,85 +147,85 @@ select {
 /* media queries which will only be activated at specific screen sizes */
 @media (max-width: 800px) {
   #table-area td {
-    font-size: 1em;
+      font-size: 1em;
   }
 }
 
 @media (max-width: 500px) {
   #table-area thead {
-    display: none;
+      display: none;
   }
 
   #table-area tr td:first-child {
-    font-size: 1.8em;
-    font-weight: bold;
-    background: #1b3146;
+      font-size: 1.8em;
+      font-weight: bold;
+      background: #1b3146;
   }
 
   #table-area tr td:last-child {
-    margin-bottom: 20px;
+      margin-bottom: 20px;
   }
 
   #table-area tr td:last-child::after {
-    display: block;
-    width: 100%;
-    height: 1px;
-    margin-top: 20px;
-    content: " ";
-    background: aliceblue;
+      display: block;
+      width: 100%;
+      height: 1px;
+      margin-top: 20px;
+      content: " ";
+      background: aliceblue;
   }
 
   #table-area td {
-    font-size: 1.25em;
+      font-size: 1.25em;
   }
 
   #table-area tbody td {
-    display: block;
-    text-align: center;
+      display: block;
+      text-align: center;
   }
 
   #table-area tbody td::before {
-    display: block;
-    font-size: 1.4em;
-    font-weight: bold;
-    text-align: center;
-    content: attr(data-th);
+      display: block;
+      font-size: 1.4em;
+      font-weight: bold;
+      text-align: center;
+      content: attr(data-th);
   }
 
   .hero h1 {
-    animation: smaller-title 1.2s forwards linear;
+      animation: smaller-title 1.2s forwards linear;
   }
 }
 
 /* keyframe animations which will be used to animate the title */
 @keyframes title {
   from {
-    opacity: 0;
+      opacity: 0;
   }
 
   to {
-    font-size: 7.5rem;
-    opacity: 1;
+      font-size: 7.5rem;
+      opacity: 1;
   }
 }
 
 @keyframes smaller-title {
   from {
-    opacity: 0;
+      opacity: 0;
   }
 
   to {
-    font-size: 5.5rem;
-    opacity: 1;
+      font-size: 5.5rem;
+      opacity: 1;
   }
 }
 
 @keyframes subtitle {
   from {
-    opacity: 0;
+      opacity: 0;
   }
 
   to {
-    opacity: 1;
+      opacity: 1;
   }
 }

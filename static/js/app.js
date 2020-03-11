@@ -14,7 +14,7 @@ function buildTable(data) {
     tbody.html("")
 
     data.forEach(row => {
-        const currentRow = tbody.append("tr") 
+        const currentRow = tbody.append("tr")
         Object.values(row).forEach(value => {
             const cell = currentRow.append("td")
             cell.text(value)
@@ -23,10 +23,10 @@ function buildTable(data) {
 }
 
 function getOptions(key, select) {
-    let arrayValues = tableData.map(e => e[key]).filter(function(value, index, self){
+    let arrayValues = tableData.map(e => e[key]).filter(function(value, index, self) {
         return index == self.indexOf(value)
     })
-    if (key != "datetime"){
+    if (key != "datetime") {
         arrayValues.sort()
     }
     arrayValues.forEach(sv => {
@@ -36,7 +36,7 @@ function getOptions(key, select) {
 }
 
 function updateFilters() {
-    
+
     const changedElement = d3.select(this).select("select");
     const elementValue = changedElement.property("value");
     const filterId = changedElement.attr("id");
@@ -58,16 +58,16 @@ function filterTable() {
 function resetFilters() {
     Object.entries(filters).forEach(([key, value]) => {
         delete filters[key]
-    filterTable()
-    d3.selectAll("select").property("value","")
+        filterTable()
+        d3.selectAll("select").property("value", "")
     })
 }
 
 d3.select("#reset-btn").on("click", resetFilters)
 d3.selectAll(".filter").on("change", updateFilters)
-getOptions("datetime",dateSelect)
-getOptions("city",citySelect)
-getOptions("state",stateSelect)
-getOptions("country",countrySelect)
-getOptions("shape",shapeSelect)
+getOptions("datetime", dateSelect)
+getOptions("city", citySelect)
+getOptions("state", stateSelect)
+getOptions("country", countrySelect)
+getOptions("shape", shapeSelect)
 buildTable(tableData)
