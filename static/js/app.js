@@ -32,6 +32,7 @@ function getOptions(key, select) {
     arrayValues.forEach(sv => {
         const selectOption = select.append("option")
         selectOption.text(sv.toUpperCase())
+        selectOption.property("value", sv)
     })
 }
 
